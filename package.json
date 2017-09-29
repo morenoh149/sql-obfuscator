@@ -1,0 +1,22 @@
+{
+  "name": "sql-obfuscator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morenoh149/sql-obfuscator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/morenoh149/sql-obfuscator/issues"
+  },
+  "homepage": "https://github.com/morenoh149/sql-obfuscator#readme",
+  "dependencies": {
+    "sql-parser": "^0.5.0"
+  }
+}

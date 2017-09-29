@@ -1,0 +1,88 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "sql2json",
+        "scope": null,
+        "escapedName": "sql2json",
+        "name": "sql2json",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/harrymoreno/programming/sql-obfuscator"
+    ]
+  ],
+  "_from": "sql2json@latest",
+  "_id": "sql2json@1.6.3",
+  "_inCache": true,
+  "_location": "/sql2json",
+  "_nodeVersion": "6.7.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/sql2json-1.6.3.tgz_1506330177092_0.9917771390173584"
+  },
+  "_npmUser": {
+    "name": "raul.requero",
+    "email": "raul.requero@vizzuality.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "sql2json",
+    "scope": null,
+    "escapedName": "sql2json",
+    "name": "sql2json",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/sql2json/-/sql2json-1.6.3.tgz",
+  "_shasum": "114d58e7d2ce17478591101f41f4b8d0801bcd8b",
+  "_shrinkwrap": null,
+  "_spec": "sql2json",
+  "_where": "/Users/harrymoreno/programming/sql-obfuscator",
+  "author": "",
+  "dependencies": {
+    "sql-parser": "git+http://github.com/rrequero/sql-parser.git#master"
+  },
+  "description": "Library that it parse sql queries and return the json with the representation of the query.",
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "babel-eslint": "^6.1.0",
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "mocha": "^3.2.0",
+    "should": "^11.1.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "114d58e7d2ce17478591101f41f4b8d0801bcd8b",
+    "tarball": "https://registry.npmjs.org/sql2json/-/sql2json-1.6.3.tgz"
+  },
+  "gitHead": "444ee1972888161cdb8db67837d03cacaa83cc36",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "raul.requero",
+      "email": "raul.requero@vizzuality.com"
+    }
+  ],
+  "name": "sql2json",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "test-watch": "mocha -w --reporter spec"
+  },
+  "version": "1.6.3"
+}
