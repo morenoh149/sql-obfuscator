@@ -1,5 +1,5 @@
 # sql-obfuscator
 
 ## Running
-`npm run build`
-`open index.html`
+1. `npm run build`
+1. `open index.html`
