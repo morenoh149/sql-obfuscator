@@ -23,10 +23,6 @@ var newNameConstructor = function(beginningCharCode) {
   }
 };
 
-var testString1 = "select height, weight, color from tableA inner join tableB on tableA.id=tableB.foo where height=10 and weight<10";
-var testString2 = "select height, weight, color from tableA inner join tableB on tableA.id=tableB.foo where height=10";
-var testString3 = "select * from tableA inner join tableB on tableA.id=tableB.foo where height=10";
-
 var obfuscate = function() {
   // reset obfuscators between runs
   var newColumnName = newNameConstructor(97);
@@ -52,26 +48,37 @@ var obfuscate = function() {
   var inputArea = document.getElementById('input');
   var inputString = inputArea.value;
   if (inputString === '') {
-    // user did not provide input, obfuscate placeholder text
+    // user did not provide input, obfuscate placeholder text instead
     inputString = inputArea.placeholder;
   }
 
-  // obfuscate input
-  obj = new Sql2json(inputString);
-  json = obj.toJSON();
-  json.select.forEach((selection) => {
-    selection.value = newColumnName()
-  })
-  json.from = 'A'
-  if(json.where) {
-    parseWhereBranch(json.where.left)
-    parseWhereBranch(json.where.right)
+  // TODO remove when parsing properly handles trailing semicolon
+  inputString = inputString.trim()
+  if (inputString.endsWith(';')) {
+    inputString = inputString.slice(0, -1);
   }
-  var result = Json2sql.toSQL(json);
 
-  // put input in DOM
-  console.log(result);
-  return result;
+  // obfuscate input
+  try {
+    obj = new Sql2json(inputString);
+    json = obj.toJSON();
+    json.select.forEach((selection) => {
+      selection.value = newColumnName()
+    })
+    json.from = 'A'
+    if(json.where) {
+      parseWhereBranch(json.where.left)
+      parseWhereBranch(json.where.right)
+    }
+    var result = Json2sql.toSQL(json);
+  } catch (e) {
+    var result = 'Could not parse sql! If you believe this is a bug please open an issue on github.com/morenoh149/sql-obfuscator';
+  }
+  result += ';';
+
+  // put result in DOM
+  var resultArea = document.getElementById('translation');
+  resultArea.innerHTML = result;
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {

@@ -5,11 +5,15 @@
 1. `open index.html`
 
 ## TODO
-does not work on all SQL, there are tons of variations between sql vendors,
-goal is complete support mySQL and Postgres at first.
+✅ handle trailing semicolon for user until better sql parsing is available
+* show useful error if sql parsing fails
+* add copy to clipboard button on result
+* obfuscate on shift-enter in textarea
+* support postgres featureset
+* support msql featureset
 
 ## Contributing
 1. Open an issue to discuss your idea and get feedback
 1. Submit your improvements via Pull Request
 1. ¿¿¿¿
-1. *PROFIT*
+1. **PROFIT**
