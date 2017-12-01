@@ -1,14 +1,12 @@
-//import sql2json from 'sql2json'
 const sql2json = require('./sql2json');
 const Json2sql = sql2json.json2sql;
 const Sql2json = sql2json.sql2json;
 
-// module hangs on semicolon
+// NOTE module hangs on semicolon
 // obj = new Sql2json("select height, weight, color from item;");
 
 /*
- * newTable returns a new name for tables, maintains it's own
- * internal state
+ * newTable returns a new name for tables, maintains it's own internal state
  */
 var newNameConstructor = function(beginningCharCode) {
   var nameCharCodes = [beginningCharCode - 1];
@@ -29,7 +27,7 @@ var testString1 = "select height, weight, color from tableA inner join tableB on
 var testString2 = "select height, weight, color from tableA inner join tableB on tableA.id=tableB.foo where height=10";
 var testString3 = "select * from tableA inner join tableB on tableA.id=tableB.foo where height=10";
 
-var obfuscateString = function() {
+var obfuscate = function() {
   // reset obfuscators between runs
   var newColumnName = newNameConstructor(97);
   var newTableName = newNameConstructor(65);
@@ -39,6 +37,7 @@ var obfuscateString = function() {
   * parseWhereBranch traverses a branch recursively and replaces any column names
   * TODO build lookup table of replacements to properly obfuscate where clause,
   * for now we naively replace where-clause literals linearly
+  * TODO factor out from obfuscate, nested due to dependency on newTempWhereColumnName
   */
   var parseWhereBranch = function(node) {
     if (node.type === 'operator') {
@@ -49,8 +48,16 @@ var obfuscateString = function() {
     }
   };
 
-  var string = testString1;
-  obj = new Sql2json(string);
+  // get input
+  var inputArea = document.getElementById('input');
+  var inputString = inputArea.value;
+  if (inputString === '') {
+    // user did not provide input, obfuscate placeholder text
+    inputString = inputArea.placeholder;
+  }
+
+  // obfuscate input
+  obj = new Sql2json(inputString);
   json = obj.toJSON();
   json.select.forEach((selection) => {
     selection.value = newColumnName()
@@ -61,20 +68,12 @@ var obfuscateString = function() {
     parseWhereBranch(json.where.right)
   }
   var result = Json2sql.toSQL(json);
+
+  // put input in DOM
   console.log(result);
   return result;
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById('submit').onclick = obfuscateString;
+  document.getElementById('submit').onclick = obfuscate;
 });
-
-var obfuscateText = function() {
-  // // Get text from DOM
-  // var textarea = document.getElementsByTagName('textarea')[0];
-  // var textToParse = textarea.value;
-
-  // // create sql objects
-  // var textSql = new Sql2json(textToParse);
-  // var 
-}

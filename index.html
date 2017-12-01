@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <script src="bundle.js"></script>
+  <meta charset="utf-8">
+  <script src="bundle.js"></script>
+  <style type="text/css">
+    #translation {
+      min-width: 100%;
+      min-height: 5em;
+      background-color: bisque;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button#submit {
+      width: 100%;
+      background-color: bisque;
+      padding: 1em;
+    }
+    #input {
+      width: 100%;
+      font-family: monospace;
+      font-size: 1.1em;
+    }
+  </style>
 </head>
 <body>
-    <h1>SQL Obfuscator</h1>
-    <textarea style="width: 250px;" rows=5 placeholder="select height, weight, color from tableA inner join tableB on tableA.id=tableB.foo where height=10"></textarea>
-    <br />
-    <button id='submit' type='submit'>Obfuscate!</button>
-    <h2>Result</h2>
-    <p class="translation"></p>
+  <h1 style="text-align: center">SQL Obfuscator</h1>
+
+  <textarea id='input' rows=10
+    placeholder="SELECT height, weight, color
+FROM tableA INNER JOIN tableB ON tableA.id=tableB.foo
+WHERE height=10" ></textarea>
+
+  <button id='submit' type='submit'>Obfuscate!</button>
+
+  <h2>Result</h2>
+  <p id="translation"></p>
 </body>
 </html>
