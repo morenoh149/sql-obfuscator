@@ -70,11 +70,10 @@ var obfuscate = function() {
       parseWhereBranch(json.where.left)
       parseWhereBranch(json.where.right)
     }
-    var result = Json2sql.toSQL(json);
+    var result = Json2sql.toSQL(json) + ';';
   } catch (e) {
     var result = 'Could not parse sql! If you believe this is a bug please open an issue on github.com/morenoh149/sql-obfuscator';
   }
-  result += ';';
 
   // put result in DOM
   var resultArea = document.getElementById('translation');
