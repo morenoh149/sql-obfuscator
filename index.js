@@ -1,3 +1,17 @@
+/*
+ * This project obfuscates arbitrary sql queries by first converting
+ * the sql to json. Then the json keys are translated to new variable
+ * names in alphabetical order.
+ * Like "tableA" -> "a"
+ *      "orders" -> "b"
+ *      ...
+ *      "users" -> "A"
+ *      ...
+ *      "users123" -> "aA"
+ *      ...
+ * the new json object is then converted back into a valid sql query
+ * and displayed to the user.
+ */
 const sql2json = require('./sql2json');
 const Json2sql = sql2json.json2sql;
 const Sql2json = sql2json.sql2json;

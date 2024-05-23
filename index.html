@@ -40,14 +40,16 @@
 <body>
   <h1 style="text-align: center">SQL Obfuscator</h1>
 
-  <textarea id='input'
-    placeholder="SELECT height, weight, color
+  <textarea id="input">
+SELECT height, weight, color
 FROM tableA INNER JOIN tableB ON tableA.id=tableB.foo
-WHERE height=10" ></textarea>
+WHERE height=10
+</textarea>
 
-  <button id='submit' type='submit'>Obfuscate</button>
+  <button id="submit" type="submit">Obfuscate</button>
 
   <h2>Result</h2>
   <p id="translation"></p>
+  <p>Reach me on <a href="https://github.com/morenoh149/sql-obfuscator">github</a>.</p>
 </body>
 </html>
